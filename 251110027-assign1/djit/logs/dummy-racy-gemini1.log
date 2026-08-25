@@ -1,0 +1,38 @@
+THREAD: Before pthread_create() Parent: 0
+THREAD: Child begin: 1
+THREAD: Before pthread_create() Parent: 0
+THREAD: Child begin: 2
+THREAD: Before pthread_create() Parent: 0
+THREAD: Child begin: 3
+LOCK: After acquire TID: 1, address: 0xLOCK01
+MEM: TID: 1, IP: 0x1001, ADDR: 0xSAFE00, Size (B): 8, isRead: 0
+LOCK: Before release TID: 1, address: 0xLOCK01
+MEM: TID: 1, IP: 0x1002, ADDR: 0xWW_VAR, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1003, ADDR: 0xWR_VAR, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1004, ADDR: 0xRW_VAR, Size (B): 8, isRead: 1
+LOCK: After acquire TID: 1, address: 0xLOCK02
+MEM: TID: 1, IP: 0x1005, ADDR: 0xSAFE01, Size (B): 8, isRead: 1
+LOCK: Before release TID: 1, address: 0xLOCK02
+LOCK: After acquire TID: 2, address: 0xLOCK01
+MEM: TID: 2, IP: 0x2001, ADDR: 0xSAFE00, Size (B): 8, isRead: 1
+LOCK: Before release TID: 2, address: 0xLOCK01
+MEM: TID: 2, IP: 0x2002, ADDR: 0xWW_VAR, Size (B): 8, isRead: 0
+MEM: TID: 2, IP: 0x2003, ADDR: 0xRW_VAR, Size (B): 8, isRead: 0
+LOCK: After acquire TID: 2, address: 0xLOCK03
+MEM: TID: 2, IP: 0x2004, ADDR: 0xSAFE02, Size (B): 8, isRead: 0
+LOCK: Before release TID: 2, address: 0xLOCK03
+MEM: TID: 2, IP: 0x2005, ADDR: 0xRW_VAR2, Size (B): 8, isRead: 1
+LOCK: After acquire TID: 3, address: 0xLOCK02
+MEM: TID: 3, IP: 0x3001, ADDR: 0xSAFE01, Size (B): 8, isRead: 0
+LOCK: Before release TID: 3, address: 0xLOCK02
+MEM: TID: 3, IP: 0x3002, ADDR: 0xWR_VAR, Size (B): 8, isRead: 1
+MEM: TID: 3, IP: 0x3003, ADDR: 0xRW_VAR2, Size (B): 8, isRead: 0
+LOCK: After acquire TID: 3, address: 0xLOCK03
+MEM: TID: 3, IP: 0x3004, ADDR: 0xSAFE02, Size (B): 8, isRead: 1
+LOCK: Before release TID: 3, address: 0xLOCK03
+MEM: TID: 1, IP: 0x1006, ADDR: 0xWW_VAR, Size (B): 8, isRead: 0
+MEM: TID: 2, IP: 0x2006, ADDR: 0xWR_VAR, Size (B): 8, isRead: 1
+MEM: TID: 3, IP: 0x3005, ADDR: 0xRW_VAR, Size (B): 8, isRead: 1
+THREAD: Child end: 1
+THREAD: Child end: 2
+THREAD: Child end: 3

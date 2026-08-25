@@ -1,0 +1,390 @@
+THREAD: Before pthread_create() Parent: 0
+THREAD: Child begin: 1
+THREAD: Before pthread_create() Parent: 0
+THREAD: Child begin: 2
+LOCK: After acquire TID: 0, address: 0x7fff0001
+MEM: TID: 0, IP: 0x400001, ADDR: 0xheap0001, Size (B): 8, isRead: 0
+MEM: TID: 0, IP: 0x400002, ADDR: 0xheap0002, Size (B): 8, isRead: 1
+LOCK: Before release TID: 0, address: 0x7fff0001
+LOCK: After acquire TID: 1, address: 0x7fff0002
+MEM: TID: 1, IP: 0x400003, ADDR: 0xheap0004, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x400004, ADDR: 0xheap0005, Size (B): 8, isRead: 0
+LOCK: Before release TID: 1, address: 0x7fff0002
+LOCK: After acquire TID: 2, address: 0x7fff0001
+MEM: TID: 2, IP: 0x400005, ADDR: 0xheap0001, Size (B): 8, isRead: 1
+MEM: TID: 2, IP: 0x400006, ADDR: 0xheap0003, Size (B): 8, isRead: 0
+LOCK: Before release TID: 2, address: 0x7fff0001
+LOCK: After acquire TID: 0, address: 0x7fff0002
+MEM: TID: 0, IP: 0x400007, ADDR: 0xheap0006, Size (B): 8, isRead: 1
+MEM: TID: 0, IP: 0x400008, ADDR: 0xheap0004, Size (B): 8, isRead: 1
+LOCK: Before release TID: 0, address: 0x7fff0002
+LOCK: After acquire TID: 1, address: 0x7fff0001
+MEM: TID: 1, IP: 0x400009, ADDR: 0xheap0002, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x40000a, ADDR: 0xheap0003, Size (B): 8, isRead: 1
+LOCK: Before release TID: 1, address: 0x7fff0001
+LOCK: After acquire TID: 2, address: 0x7fff0002
+MEM: TID: 2, IP: 0x40000b, ADDR: 0xheap0005, Size (B): 8, isRead: 1
+MEM: TID: 2, IP: 0x40000c, ADDR: 0xheap0006, Size (B): 8, isRead: 0
+LOCK: Before release TID: 2, address: 0x7fff0002
+LOCK: After acquire TID: 0, address: 0x7fff0001
+MEM: TID: 0, IP: 0x40000d, ADDR: 0xheap0001, Size (B): 8, isRead: 0
+MEM: TID: 0, IP: 0x40000e, ADDR: 0xheap0002, Size (B): 8, isRead: 0
+LOCK: Before release TID: 0, address: 0x7fff0001
+LOCK: After acquire TID: 1, address: 0x7fff0002
+MEM: TID: 1, IP: 0x40000f, ADDR: 0xheap0004, Size (B): 8, isRead: 1
+MEM: TID: 1, IP: 0x400010, ADDR: 0xheap0005, Size (B): 8, isRead: 0
+LOCK: Before release TID: 1, address: 0x7fff0002
+LOCK: After acquire TID: 2, address: 0x7fff0001
+MEM: TID: 2, IP: 0x400011, ADDR: 0xheap0003, Size (B): 8, isRead: 0
+MEM: TID: 2, IP: 0x400012, ADDR: 0xheap0001, Size (B): 8, isRead: 1
+LOCK: Before release TID: 2, address: 0x7fff0001
+LOCK: After acquire TID: 0, address: 0x7fff0002
+MEM: TID: 0, IP: 0x400013, ADDR: 0xheap0006, Size (B): 8, isRead: 0
+MEM: TID: 0, IP: 0x400014, ADDR: 0xheap0004, Size (B): 8, isRead: 1
+LOCK: Before release TID: 0, address: 0x7fff0002
+LOCK: After acquire TID: 1, address: 0x7fff0001
+MEM: TID: 1, IP: 0x400015, ADDR: 0xheap0002, Size (B): 8, isRead: 1
+MEM: TID: 1, IP: 0x400016, ADDR: 0xheap0003, Size (B): 8, isRead: 0
+LOCK: Before release TID: 1, address: 0x7fff0001
+LOCK: After acquire TID: 2, address: 0x7fff0002
+MEM: TID: 2, IP: 0x400017, ADDR: 0xheap0005, Size (B): 8, isRead: 0
+MEM: TID: 2, IP: 0x400018, ADDR: 0xheap0006, Size (B): 8, isRead: 1
+LOCK: Before release TID: 2, address: 0x7fff0002
+LOCK: After acquire TID: 0, address: 0x7fff0001
+MEM: TID: 0, IP: 0x400019, ADDR: 0xheap0001, Size (B): 8, isRead: 1
+MEM: TID: 0, IP: 0x40001a, ADDR: 0xheap0002, Size (B): 8, isRead: 0
+LOCK: Before release TID: 0, address: 0x7fff0001
+LOCK: After acquire TID: 1, address: 0x7fff0002
+MEM: TID: 1, IP: 0x40001b, ADDR: 0xheap0004, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x40001c, ADDR: 0xheap0005, Size (B): 8, isRead: 1
+LOCK: Before release TID: 1, address: 0x7fff0002
+LOCK: After acquire TID: 2, address: 0x7fff0001
+MEM: TID: 2, IP: 0x40001d, ADDR: 0xheap0003, Size (B): 8, isRead: 1
+MEM: TID: 2, IP: 0x40001e, ADDR: 0xheap0001, Size (B): 8, isRead: 0
+LOCK: Before release TID: 2, address: 0x7fff0001
+LOCK: After acquire TID: 0, address: 0x7fff0002
+MEM: TID: 0, IP: 0x40001f, ADDR: 0xheap0006, Size (B): 8, isRead: 0
+MEM: TID: 0, IP: 0x400020, ADDR: 0xheap0004, Size (B): 8, isRead: 0
+LOCK: Before release TID: 0, address: 0x7fff0002
+LOCK: After acquire TID: 1, address: 0x7fff0001
+MEM: TID: 1, IP: 0x400021, ADDR: 0xheap0002, Size (B): 8, isRead: 1
+MEM: TID: 1, IP: 0x400022, ADDR: 0xheap0003, Size (B): 8, isRead: 0
+LOCK: Before release TID: 1, address: 0x7fff0001
+LOCK: After acquire TID: 2, address: 0x7fff0002
+MEM: TID: 2, IP: 0x400023, ADDR: 0xheap0005, Size (B): 8, isRead: 0
+MEM: TID: 2, IP: 0x400024, ADDR: 0xheap0006, Size (B): 8, isRead: 1
+LOCK: Before release TID: 2, address: 0x7fff0002
+LOCK: After acquire TID: 0, address: 0x7fff0001
+MEM: TID: 0, IP: 0x400025, ADDR: 0xheap0001, Size (B): 8, isRead: 0
+MEM: TID: 0, IP: 0x400026, ADDR: 0xheap0002, Size (B): 8, isRead: 1
+LOCK: Before release TID: 0, address: 0x7fff0001
+LOCK: After acquire TID: 1, address: 0x7fff0002
+MEM: TID: 1, IP: 0x400027, ADDR: 0xheap0004, Size (B): 8, isRead: 1
+MEM: TID: 1, IP: 0x400028, ADDR: 0xheap0005, Size (B): 8, isRead: 0
+LOCK: Before release TID: 1, address: 0x7fff0002
+LOCK: After acquire TID: 2, address: 0x7fff0001
+MEM: TID: 2, IP: 0x400029, ADDR: 0xheap0003, Size (B): 8, isRead: 0
+MEM: TID: 2, IP: 0x40002a, ADDR: 0xheap0001, Size (B): 8, isRead: 1
+LOCK: Before release TID: 2, address: 0x7fff0001
+LOCK: After acquire TID: 0, address: 0x7fff0002
+MEM: TID: 0, IP: 0x40002b, ADDR: 0xheap0006, Size (B): 8, isRead: 1
+MEM: TID: 0, IP: 0x40002c, ADDR: 0xheap0004, Size (B): 8, isRead: 0
+LOCK: Before release TID: 0, address: 0x7fff0002
+LOCK: After acquire TID: 1, address: 0x7fff0001
+MEM: TID: 1, IP: 0x40002d, ADDR: 0xheap0002, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x40002e, ADDR: 0xheap0003, Size (B): 8, isRead: 1
+LOCK: Before release TID: 1, address: 0x7fff0001
+LOCK: After acquire TID: 2, address: 0x7fff0002
+MEM: TID: 2, IP: 0x40002f, ADDR: 0xheap0005, Size (B): 8, isRead: 1
+MEM: TID: 2, IP: 0x400030, ADDR: 0xheap0006, Size (B): 8, isRead: 0
+LOCK: Before release TID: 2, address: 0x7fff0002
+LOCK: After acquire TID: 0, address: 0x7fff0001
+MEM: TID: 0, IP: 0x400031, ADDR: 0xheap0001, Size (B): 8, isRead: 1
+MEM: TID: 0, IP: 0x400032, ADDR: 0xheap0002, Size (B): 8, isRead: 0
+LOCK: Before release TID: 0, address: 0x7fff0001
+LOCK: After acquire TID: 1, address: 0x7fff0002
+MEM: TID: 1, IP: 0x400033, ADDR: 0xheap0004, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x400034, ADDR: 0xheap0005, Size (B): 8, isRead: 1
+LOCK: Before release TID: 1, address: 0x7fff0002
+LOCK: After acquire TID: 2, address: 0x7fff0001
+MEM: TID: 2, IP: 0x400035, ADDR: 0xheap0003, Size (B): 8, isRead: 1
+MEM: TID: 2, IP: 0x400036, ADDR: 0xheap0001, Size (B): 8, isRead: 0
+LOCK: Before release TID: 2, address: 0x7fff0001
+LOCK: After acquire TID: 0, address: 0x7fff0002
+MEM: TID: 0, IP: 0x400037, ADDR: 0xheap0006, Size (B): 8, isRead: 0
+MEM: TID: 0, IP: 0x400038, ADDR: 0xheap0004, Size (B): 8, isRead: 1
+LOCK: Before release TID: 0, address: 0x7fff0002
+LOCK: After acquire TID: 1, address: 0x7fff0001
+MEM: TID: 1, IP: 0x400039, ADDR: 0xheap0002, Size (B): 8, isRead: 1
+MEM: TID: 1, IP: 0x40003a, ADDR: 0xheap0003, Size (B): 8, isRead: 0
+LOCK: Before release TID: 1, address: 0x7fff0001
+LOCK: After acquire TID: 2, address: 0x7fff0002
+MEM: TID: 2, IP: 0x40003b, ADDR: 0xheap0005, Size (B): 8, isRead: 0
+MEM: TID: 2, IP: 0x40003c, ADDR: 0xheap0006, Size (B): 8, isRead: 1
+LOCK: Before release TID: 2, address: 0x7fff0002
+LOCK: After acquire TID: 0, address: 0x7fff0001
+MEM: TID: 0, IP: 0x40003d, ADDR: 0xheap0001, Size (B): 8, isRead: 0
+MEM: TID: 0, IP: 0x40003e, ADDR: 0xheap0002, Size (B): 8, isRead: 1
+LOCK: Before release TID: 0, address: 0x7fff0001
+LOCK: After acquire TID: 1, address: 0x7fff0002
+MEM: TID: 1, IP: 0x40003f, ADDR: 0xheap0004, Size (B): 8, isRead: 1
+MEM: TID: 1, IP: 0x400040, ADDR: 0xheap0005, Size (B): 8, isRead: 0
+LOCK: Before release TID: 1, address: 0x7fff0002
+LOCK: After acquire TID: 2, address: 0x7fff0001
+MEM: TID: 2, IP: 0x400041, ADDR: 0xheap0003, Size (B): 8, isRead: 0
+MEM: TID: 2, IP: 0x400042, ADDR: 0xheap0001, Size (B): 8, isRead: 1
+LOCK: Before release TID: 2, address: 0x7fff0001
+LOCK: After acquire TID: 0, address: 0x7fff0002
+MEM: TID: 0, IP: 0x400043, ADDR: 0xheap0006, Size (B): 8, isRead: 1
+MEM: TID: 0, IP: 0x400044, ADDR: 0xheap0004, Size (B): 8, isRead: 0
+LOCK: Before release TID: 0, address: 0x7fff0002
+LOCK: After acquire TID: 1, address: 0x7fff0001
+MEM: TID: 1, IP: 0x400045, ADDR: 0xheap0002, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x400046, ADDR: 0xheap0003, Size (B): 8, isRead: 1
+LOCK: Before release TID: 1, address: 0x7fff0001
+LOCK: After acquire TID: 2, address: 0x7fff0002
+MEM: TID: 2, IP: 0x400047, ADDR: 0xheap0005, Size (B): 8, isRead: 1
+MEM: TID: 2, IP: 0x400048, ADDR: 0xheap0006, Size (B): 8, isRead: 0
+LOCK: Before release TID: 2, address: 0x7fff0002
+LOCK: After acquire TID: 0, address: 0x7fff0001
+MEM: TID: 0, IP: 0x400049, ADDR: 0xheap0001, Size (B): 8, isRead: 1
+MEM: TID: 0, IP: 0x40004a, ADDR: 0xheap0002, Size (B): 8, isRead: 0
+LOCK: Before release TID: 0, address: 0x7fff0001
+LOCK: After acquire TID: 1, address: 0x7fff0002
+MEM: TID: 1, IP: 0x40004b, ADDR: 0xheap0004, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x40004c, ADDR: 0xheap0005, Size (B): 8, isRead: 1
+LOCK: Before release TID: 1, address: 0x7fff0002
+LOCK: After acquire TID: 2, address: 0x7fff0001
+MEM: TID: 2, IP: 0x40004d, ADDR: 0xheap0003, Size (B): 8, isRead: 1
+MEM: TID: 2, IP: 0x40004e, ADDR: 0xheap0001, Size (B): 8, isRead: 0
+LOCK: Before release TID: 2, address: 0x7fff0001
+LOCK: After acquire TID: 0, address: 0x7fff0002
+MEM: TID: 0, IP: 0x40004f, ADDR: 0xheap0006, Size (B): 8, isRead: 0
+MEM: TID: 0, IP: 0x400050, ADDR: 0xheap0004, Size (B): 8, isRead: 1
+LOCK: Before release TID: 0, address: 0x7fff0002
+LOCK: After acquire TID: 1, address: 0x7fff0001
+MEM: TID: 1, IP: 0x400051, ADDR: 0xheap0002, Size (B): 8, isRead: 1
+MEM: TID: 1, IP: 0x400052, ADDR: 0xheap0003, Size (B): 8, isRead: 0
+LOCK: Before release TID: 1, address: 0x7fff0001
+LOCK: After acquire TID: 2, address: 0x7fff0002
+MEM: TID: 2, IP: 0x400053, ADDR: 0xheap0005, Size (B): 8, isRead: 0
+MEM: TID: 2, IP: 0x400054, ADDR: 0xheap0006, Size (B): 8, isRead: 1
+LOCK: Before release TID: 2, address: 0x7fff0002
+LOCK: After acquire TID: 0, address: 0x7fff0001
+MEM: TID: 0, IP: 0x400055, ADDR: 0xheap0001, Size (B): 8, isRead: 0
+MEM: TID: 0, IP: 0x400056, ADDR: 0xheap0002, Size (B): 8, isRead: 1
+LOCK: Before release TID: 0, address: 0x7fff0001
+LOCK: After acquire TID: 1, address: 0x7fff0002
+MEM: TID: 1, IP: 0x400057, ADDR: 0xheap0004, Size (B): 8, isRead: 1
+MEM: TID: 1, IP: 0x400058, ADDR: 0xheap0005, Size (B): 8, isRead: 0
+LOCK: Before release TID: 1, address: 0x7fff0002
+LOCK: After acquire TID: 2, address: 0x7fff0001
+MEM: TID: 2, IP: 0x400059, ADDR: 0xheap0003, Size (B): 8, isRead: 0
+MEM: TID: 2, IP: 0x40005a, ADDR: 0xheap0001, Size (B): 8, isRead: 1
+LOCK: Before release TID: 2, address: 0x7fff0001
+LOCK: After acquire TID: 0, address: 0x7fff0002
+MEM: TID: 0, IP: 0x40005b, ADDR: 0xheap0006, Size (B): 8, isRead: 1
+MEM: TID: 0, IP: 0x40005c, ADDR: 0xheap0004, Size (B): 8, isRead: 0
+LOCK: Before release TID: 0, address: 0x7fff0002
+LOCK: After acquire TID: 1, address: 0x7fff0001
+MEM: TID: 1, IP: 0x40005d, ADDR: 0xheap0002, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x40005e, ADDR: 0xheap0003, Size (B): 8, isRead: 1
+LOCK: Before release TID: 1, address: 0x7fff0001
+LOCK: After acquire TID: 2, address: 0x7fff0002
+MEM: TID: 2, IP: 0x40005f, ADDR: 0xheap0005, Size (B): 8, isRead: 1
+MEM: TID: 2, IP: 0x400060, ADDR: 0xheap0006, Size (B): 8, isRead: 0
+LOCK: Before release TID: 2, address: 0x7fff0002
+LOCK: After acquire TID: 0, address: 0x7fff0001
+MEM: TID: 0, IP: 0x400061, ADDR: 0xheap0001, Size (B): 8, isRead: 1
+MEM: TID: 0, IP: 0x400062, ADDR: 0xheap0002, Size (B): 8, isRead: 0
+LOCK: Before release TID: 0, address: 0x7fff0001
+LOCK: After acquire TID: 1, address: 0x7fff0002
+MEM: TID: 1, IP: 0x400063, ADDR: 0xheap0004, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x400064, ADDR: 0xheap0005, Size (B): 8, isRead: 1
+LOCK: Before release TID: 1, address: 0x7fff0002
+LOCK: After acquire TID: 2, address: 0x7fff0001
+MEM: TID: 2, IP: 0x400065, ADDR: 0xheap0003, Size (B): 8, isRead: 1
+MEM: TID: 2, IP: 0x400066, ADDR: 0xheap0001, Size (B): 8, isRead: 0
+LOCK: Before release TID: 2, address: 0x7fff0001
+LOCK: After acquire TID: 0, address: 0x7fff0002
+MEM: TID: 0, IP: 0x400067, ADDR: 0xheap0006, Size (B): 8, isRead: 0
+MEM: TID: 0, IP: 0x400068, ADDR: 0xheap0004, Size (B): 8, isRead: 1
+LOCK: Before release TID: 0, address: 0x7fff0002
+LOCK: After acquire TID: 1, address: 0x7fff0001
+MEM: TID: 1, IP: 0x400069, ADDR: 0xheap0002, Size (B): 8, isRead: 1
+MEM: TID: 1, IP: 0x40006a, ADDR: 0xheap0003, Size (B): 8, isRead: 0
+LOCK: Before release TID: 1, address: 0x7fff0001
+LOCK: After acquire TID: 2, address: 0x7fff0002
+MEM: TID: 2, IP: 0x40006b, ADDR: 0xheap0005, Size (B): 8, isRead: 0
+MEM: TID: 2, IP: 0x40006c, ADDR: 0xheap0006, Size (B): 8, isRead: 1
+LOCK: Before release TID: 2, address: 0x7fff0002
+LOCK: After acquire TID: 0, address: 0x7fff0001
+MEM: TID: 0, IP: 0x40006d, ADDR: 0xheap0001, Size (B): 8, isRead: 0
+MEM: TID: 0, IP: 0x40006e, ADDR: 0xheap0002, Size (B): 8, isRead: 1
+LOCK: Before release TID: 0, address: 0x7fff0001
+LOCK: After acquire TID: 1, address: 0x7fff0002
+MEM: TID: 1, IP: 0x40006f, ADDR: 0xheap0004, Size (B): 8, isRead: 1
+MEM: TID: 1, IP: 0x400070, ADDR: 0xheap0005, Size (B): 8, isRead: 0
+LOCK: Before release TID: 1, address: 0x7fff0002
+LOCK: After acquire TID: 2, address: 0x7fff0001
+MEM: TID: 2, IP: 0x400071, ADDR: 0xheap0003, Size (B): 8, isRead: 0
+MEM: TID: 2, IP: 0x400072, ADDR: 0xheap0001, Size (B): 8, isRead: 1
+LOCK: Before release TID: 2, address: 0x7fff0001
+LOCK: After acquire TID: 0, address: 0x7fff0002
+MEM: TID: 0, IP: 0x400073, ADDR: 0xheap0006, Size (B): 8, isRead: 1
+MEM: TID: 0, IP: 0x400074, ADDR: 0xheap0004, Size (B): 8, isRead: 0
+LOCK: Before release TID: 0, address: 0x7fff0002
+LOCK: After acquire TID: 1, address: 0x7fff0001
+MEM: TID: 1, IP: 0x400075, ADDR: 0xheap0002, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x400076, ADDR: 0xheap0003, Size (B): 8, isRead: 1
+LOCK: Before release TID: 1, address: 0x7fff0001
+LOCK: After acquire TID: 2, address: 0x7fff0002
+MEM: TID: 2, IP: 0x400077, ADDR: 0xheap0005, Size (B): 8, isRead: 1
+MEM: TID: 2, IP: 0x400078, ADDR: 0xheap0006, Size (B): 8, isRead: 0
+LOCK: Before release TID: 2, address: 0x7fff0002
+LOCK: After acquire TID: 0, address: 0x7fff0001
+MEM: TID: 0, IP: 0x400079, ADDR: 0xheap0001, Size (B): 8, isRead: 1
+MEM: TID: 0, IP: 0x40007a, ADDR: 0xheap0002, Size (B): 8, isRead: 0
+LOCK: Before release TID: 0, address: 0x7fff0001
+LOCK: After acquire TID: 1, address: 0x7fff0002
+MEM: TID: 1, IP: 0x40007b, ADDR: 0xheap0004, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x40007c, ADDR: 0xheap0005, Size (B): 8, isRead: 1
+LOCK: Before release TID: 1, address: 0x7fff0002
+LOCK: After acquire TID: 2, address: 0x7fff0001
+MEM: TID: 2, IP: 0x40007d, ADDR: 0xheap0003, Size (B): 8, isRead: 1
+MEM: TID: 2, IP: 0x40007e, ADDR: 0xheap0001, Size (B): 8, isRead: 0
+LOCK: Before release TID: 2, address: 0x7fff0001
+LOCK: After acquire TID: 0, address: 0x7fff0002
+MEM: TID: 0, IP: 0x40007f, ADDR: 0xheap0006, Size (B): 8, isRead: 0
+MEM: TID: 0, IP: 0x400080, ADDR: 0xheap0004, Size (B): 8, isRead: 1
+LOCK: Before release TID: 0, address: 0x7fff0002
+LOCK: After acquire TID: 1, address: 0x7fff0001
+MEM: TID: 1, IP: 0x400081, ADDR: 0xheap0002, Size (B): 8, isRead: 1
+MEM: TID: 1, IP: 0x400082, ADDR: 0xheap0003, Size (B): 8, isRead: 0
+LOCK: Before release TID: 1, address: 0x7fff0001
+LOCK: After acquire TID: 2, address: 0x7fff0002
+MEM: TID: 2, IP: 0x400083, ADDR: 0xheap0005, Size (B): 8, isRead: 0
+MEM: TID: 2, IP: 0x400084, ADDR: 0xheap0006, Size (B): 8, isRead: 1
+LOCK: Before release TID: 2, address: 0x7fff0002
+LOCK: After acquire TID: 0, address: 0x7fff0001
+MEM: TID: 0, IP: 0x400085, ADDR: 0xheap0001, Size (B): 8, isRead: 0
+MEM: TID: 0, IP: 0x400086, ADDR: 0xheap0002, Size (B): 8, isRead: 1
+LOCK: Before release TID: 0, address: 0x7fff0001
+LOCK: After acquire TID: 1, address: 0x7fff0002
+MEM: TID: 1, IP: 0x400087, ADDR: 0xheap0004, Size (B): 8, isRead: 1
+MEM: TID: 1, IP: 0x400088, ADDR: 0xheap0005, Size (B): 8, isRead: 0
+LOCK: Before release TID: 1, address: 0x7fff0002
+LOCK: After acquire TID: 2, address: 0x7fff0001
+MEM: TID: 2, IP: 0x400089, ADDR: 0xheap0003, Size (B): 8, isRead: 0
+MEM: TID: 2, IP: 0x40008a, ADDR: 0xheap0001, Size (B): 8, isRead: 1
+LOCK: Before release TID: 2, address: 0x7fff0001
+LOCK: After acquire TID: 0, address: 0x7fff0002
+MEM: TID: 0, IP: 0x40008b, ADDR: 0xheap0006, Size (B): 8, isRead: 1
+MEM: TID: 0, IP: 0x40008c, ADDR: 0xheap0004, Size (B): 8, isRead: 0
+LOCK: Before release TID: 0, address: 0x7fff0002
+LOCK: After acquire TID: 1, address: 0x7fff0001
+MEM: TID: 1, IP: 0x40008d, ADDR: 0xheap0002, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x40008e, ADDR: 0xheap0003, Size (B): 8, isRead: 1
+LOCK: Before release TID: 1, address: 0x7fff0001
+LOCK: After acquire TID: 2, address: 0x7fff0002
+MEM: TID: 2, IP: 0x40008f, ADDR: 0xheap0005, Size (B): 8, isRead: 1
+MEM: TID: 2, IP: 0x400090, ADDR: 0xheap0006, Size (B): 8, isRead: 0
+LOCK: Before release TID: 2, address: 0x7fff0002
+LOCK: After acquire TID: 0, address: 0x7fff0001
+MEM: TID: 0, IP: 0x400091, ADDR: 0xheap0001, Size (B): 8, isRead: 1
+MEM: TID: 0, IP: 0x400092, ADDR: 0xheap0002, Size (B): 8, isRead: 0
+LOCK: Before release TID: 0, address: 0x7fff0001
+LOCK: After acquire TID: 1, address: 0x7fff0002
+MEM: TID: 1, IP: 0x400093, ADDR: 0xheap0004, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x400094, ADDR: 0xheap0005, Size (B): 8, isRead: 1
+LOCK: Before release TID: 1, address: 0x7fff0002
+LOCK: After acquire TID: 2, address: 0x7fff0001
+MEM: TID: 2, IP: 0x400095, ADDR: 0xheap0003, Size (B): 8, isRead: 1
+MEM: TID: 2, IP: 0x400096, ADDR: 0xheap0001, Size (B): 8, isRead: 0
+LOCK: Before release TID: 2, address: 0x7fff0001
+LOCK: After acquire TID: 0, address: 0x7fff0002
+MEM: TID: 0, IP: 0x400097, ADDR: 0xheap0006, Size (B): 8, isRead: 0
+MEM: TID: 0, IP: 0x400098, ADDR: 0xheap0004, Size (B): 8, isRead: 1
+LOCK: Before release TID: 0, address: 0x7fff0002
+LOCK: After acquire TID: 1, address: 0x7fff0001
+MEM: TID: 1, IP: 0x400099, ADDR: 0xheap0002, Size (B): 8, isRead: 1
+MEM: TID: 1, IP: 0x40009a, ADDR: 0xheap0003, Size (B): 8, isRead: 0
+LOCK: Before release TID: 1, address: 0x7fff0001
+LOCK: After acquire TID: 2, address: 0x7fff0002
+MEM: TID: 2, IP: 0x40009b, ADDR: 0xheap0005, Size (B): 8, isRead: 0
+MEM: TID: 2, IP: 0x40009c, ADDR: 0xheap0006, Size (B): 8, isRead: 1
+LOCK: Before release TID: 2, address: 0x7fff0002
+LOCK: After acquire TID: 0, address: 0x7fff0001
+MEM: TID: 0, IP: 0x40009d, ADDR: 0xheap0001, Size (B): 8, isRead: 0
+MEM: TID: 0, IP: 0x40009e, ADDR: 0xheap0002, Size (B): 8, isRead: 1
+LOCK: Before release TID: 0, address: 0x7fff0001
+LOCK: After acquire TID: 1, address: 0x7fff0002
+MEM: TID: 1, IP: 0x40009f, ADDR: 0xheap0004, Size (B): 8, isRead: 1
+MEM: TID: 1, IP: 0x4000a0, ADDR: 0xheap0005, Size (B): 8, isRead: 0
+LOCK: Before release TID: 1, address: 0x7fff0002
+LOCK: After acquire TID: 2, address: 0x7fff0001
+MEM: TID: 2, IP: 0x4000a1, ADDR: 0xheap0003, Size (B): 8, isRead: 0
+MEM: TID: 2, IP: 0x4000a2, ADDR: 0xheap0001, Size (B): 8, isRead: 1
+LOCK: Before release TID: 2, address: 0x7fff0001
+LOCK: After acquire TID: 0, address: 0x7fff0002
+MEM: TID: 0, IP: 0x4000a3, ADDR: 0xheap0006, Size (B): 8, isRead: 1
+MEM: TID: 0, IP: 0x4000a4, ADDR: 0xheap0004, Size (B): 8, isRead: 0
+LOCK: Before release TID: 0, address: 0x7fff0002
+LOCK: After acquire TID: 1, address: 0x7fff0001
+MEM: TID: 1, IP: 0x4000a5, ADDR: 0xheap0002, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x4000a6, ADDR: 0xheap0003, Size (B): 8, isRead: 1
+LOCK: Before release TID: 1, address: 0x7fff0001
+LOCK: After acquire TID: 2, address: 0x7fff0002
+MEM: TID: 2, IP: 0x4000a7, ADDR: 0xheap0005, Size (B): 8, isRead: 1
+MEM: TID: 2, IP: 0x4000a8, ADDR: 0xheap0006, Size (B): 8, isRead: 0
+LOCK: Before release TID: 2, address: 0x7fff0002
+LOCK: After acquire TID: 0, address: 0x7fff0001
+MEM: TID: 0, IP: 0x4000a9, ADDR: 0xheap0001, Size (B): 8, isRead: 1
+MEM: TID: 0, IP: 0x4000aa, ADDR: 0xheap0002, Size (B): 8, isRead: 0
+LOCK: Before release TID: 0, address: 0x7fff0001
+LOCK: After acquire TID: 1, address: 0x7fff0002
+MEM: TID: 1, IP: 0x4000ab, ADDR: 0xheap0004, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x4000ac, ADDR: 0xheap0005, Size (B): 8, isRead: 1
+LOCK: Before release TID: 1, address: 0x7fff0002
+LOCK: After acquire TID: 2, address: 0x7fff0001
+MEM: TID: 2, IP: 0x4000ad, ADDR: 0xheap0003, Size (B): 8, isRead: 1
+MEM: TID: 2, IP: 0x4000ae, ADDR: 0xheap0001, Size (B): 8, isRead: 0
+LOCK: Before release TID: 2, address: 0x7fff0001
+LOCK: After acquire TID: 0, address: 0x7fff0002
+MEM: TID: 0, IP: 0x4000af, ADDR: 0xheap0006, Size (B): 8, isRead: 0
+MEM: TID: 0, IP: 0x4000b0, ADDR: 0xheap0004, Size (B): 8, isRead: 1
+LOCK: Before release TID: 0, address: 0x7fff0002
+LOCK: After acquire TID: 1, address: 0x7fff0001
+MEM: TID: 1, IP: 0x4000b1, ADDR: 0xheap0002, Size (B): 8, isRead: 1
+MEM: TID: 1, IP: 0x4000b2, ADDR: 0xheap0003, Size (B): 8, isRead: 0
+LOCK: Before release TID: 1, address: 0x7fff0001
+LOCK: After acquire TID: 2, address: 0x7fff0002
+MEM: TID: 2, IP: 0x4000b3, ADDR: 0xheap0005, Size (B): 8, isRead: 0
+MEM: TID: 2, IP: 0x4000b4, ADDR: 0xheap0006, Size (B): 8, isRead: 1
+LOCK: Before release TID: 2, address: 0x7fff0002
+LOCK: After acquire TID: 0, address: 0x7fff0001
+MEM: TID: 0, IP: 0x4000b5, ADDR: 0xheap0001, Size (B): 8, isRead: 0
+MEM: TID: 0, IP: 0x4000b6, ADDR: 0xheap0002, Size (B): 8, isRead: 1
+LOCK: Before release TID: 0, address: 0x7fff0001
+LOCK: After acquire TID: 1, address: 0x7fff0002
+MEM: TID: 1, IP: 0x4000b7, ADDR: 0xheap0004, Size (B): 8, isRead: 1
+MEM: TID: 1, IP: 0x4000b8, ADDR: 0xheap0005, Size (B): 8, isRead: 0
+LOCK: Before release TID: 1, address: 0x7fff0002
+LOCK: After acquire TID: 2, address: 0x7fff0001
+MEM: TID: 2, IP: 0x4000b9, ADDR: 0xheap0003, Size (B): 8, isRead: 0
+MEM: TID: 2, IP: 0x4000ba, ADDR: 0xheap0001, Size (B): 8, isRead: 1
+LOCK: Before release TID: 2, address: 0x7fff0001
+LOCK: After acquire TID: 0, address: 0x7fff0002
+MEM: TID: 0, IP: 0x4000bb, ADDR: 0xheap0006, Size (B): 8, isRead: 1
+MEM: TID: 0, IP: 0x4000bc, ADDR: 0xheap0004, Size (B): 8, isRead: 0
+LOCK: Before release TID: 0, address: 0x7fff0002
+LOCK: After acquire TID: 1, address: 0x7fff0001
+MEM: TID: 1, IP: 0x4000bd, ADDR: 0xheap0002, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x4000be, ADDR: 0xheap0003, Size (B): 8, isRead: 1
+LOCK: Before release TID: 1, address: 0x7fff0001
+LOCK: After acquire TID: 2, address: 0x7fff0002
+MEM: TID: 2, IP: 0x4000bf, ADDR: 0xheap0005, Size (B): 8, isRead: 1
+MEM: TID: 2, IP: 0x4000c0, ADDR: 0xheap0006, Size (B): 8, isRead: 0
+LOCK: Before release TID: 2, address: 0x7fff0002
+THREAD: Child end: 1
+THREAD: Child end: 2

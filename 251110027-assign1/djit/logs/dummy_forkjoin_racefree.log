@@ -1,0 +1,20 @@
+MEM: TID: 0, IP: 0x100, ADDR: 0xSafeFork, Size (B): 8, isRead: 0
+THREAD: Before pthread_create() Parent: 0
+THREAD: Child begin: 1
+MEM: TID: 1, IP: 0x200, ADDR: 0xSafeFork, Size (B): 8, isRead: 1
+LOCK: After acquire TID: 1, address: 0xLockA
+MEM: TID: 1, IP: 0x201, ADDR: 0xLockedVar, Size (B): 8, isRead: 0
+LOCK: Before release TID: 1, address: 0xLockA
+THREAD: Before pthread_create() Parent: 0
+THREAD: Child begin: 2
+LOCK: After acquire TID: 2, address: 0xLockA
+MEM: TID: 2, IP: 0x300, ADDR: 0xLockedVar, Size (B): 8, isRead: 1
+LOCK: Before release TID: 2, address: 0xLockA
+MEM: TID: 0, IP: 0x101, ADDR: 0xParentPrivate, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x202, ADDR: 0xChildPrivate, Size (B): 8, isRead: 0
+THREAD: Before pthread_join(): Parent: 0
+THREAD: Child end: 1
+MEM: TID: 0, IP: 0x102, ADDR: 0xChildPrivate, Size (B): 8, isRead: 1
+THREAD: Child end: 2
+THREAD: Before pthread_join(): Parent: 0
+MEM: TID: 0, IP: 0x103, ADDR: 0xLockedVar, Size (B): 8, isRead: 0

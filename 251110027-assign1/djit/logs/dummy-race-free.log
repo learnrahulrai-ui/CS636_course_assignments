@@ -1,0 +1,10 @@
+THREAD: Before pthread_create() Parent: 0
+THREAD: Child begin: 1
+LOCK: After acquire TID: 0, address: 0x74834702ea58
+MEM: TID: 0, IP: 0x74834700a5d8, ADDR: 0x74834702ea64, Size (B): 4, isRead: 0
+LOCK: Before release TID: 0, address: 0x74834702ea58
+LOCK: After acquire TID: 1, address: 0x74834702ea58
+MEM: TID: 1, IP: 0x74834700ffee, ADDR: 0x74834702ea64, Size (B): 4, isRead: 1
+LOCK: Before release TID: 1, address: 0x74834702ea58
+THREAD: Child end: 1
+THREAD: Child end: 0

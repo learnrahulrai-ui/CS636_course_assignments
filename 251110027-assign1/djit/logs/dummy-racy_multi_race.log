@@ -1,0 +1,164 @@
+THREAD: Before pthread_create() Parent: 0
+THREAD: Child begin: 1
+THREAD: Before pthread_create() Parent: 0
+THREAD: Child begin: 2
+THREAD: Before pthread_create() Parent: 0
+THREAD: Child begin: 3
+LOCK: After acquire TID: 0, address: 0xLOCKAAAA
+MEM: TID: 0, IP: 0x90001, ADDR: 0xSAFE0001, Size (B): 8, isRead: 0
+LOCK: Before release TID: 0, address: 0xLOCKAAAA
+MEM: TID: 1, IP: 0x1A001, ADDR: 0xWW0001, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1A002, ADDR: 0xWW0002, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1A003, ADDR: 0xWW0003, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1A004, ADDR: 0xWW0004, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1A005, ADDR: 0xWW0005, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1A006, ADDR: 0xWW0006, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1A007, ADDR: 0xWW0007, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1A008, ADDR: 0xWW0008, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1A009, ADDR: 0xWW0009, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1A00a, ADDR: 0xWW000a, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1A00b, ADDR: 0xWW000b, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1A00c, ADDR: 0xWW000c, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1A00d, ADDR: 0xWW000d, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1A00e, ADDR: 0xWW000e, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1A00f, ADDR: 0xWW000f, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1A010, ADDR: 0xWW0010, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1A011, ADDR: 0xWW0011, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1A012, ADDR: 0xWW0012, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1A013, ADDR: 0xWW0013, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1A014, ADDR: 0xWW0014, Size (B): 8, isRead: 0
+LOCK: After acquire TID: 1, address: 0xLOCKBBBB
+MEM: TID: 1, IP: 0x90002, ADDR: 0xSAFE0002, Size (B): 8, isRead: 1
+LOCK: Before release TID: 1, address: 0xLOCKBBBB
+MEM: TID: 1, IP: 0x1B001, ADDR: 0xWR0001, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1B002, ADDR: 0xWR0002, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1B003, ADDR: 0xWR0003, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1B004, ADDR: 0xWR0004, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1B005, ADDR: 0xWR0005, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1B006, ADDR: 0xWR0006, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1B007, ADDR: 0xWR0007, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1B008, ADDR: 0xWR0008, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1B009, ADDR: 0xWR0009, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1B00a, ADDR: 0xWR000a, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1B00b, ADDR: 0xWR000b, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1B00c, ADDR: 0xWR000c, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1B00d, ADDR: 0xWR000d, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1B00e, ADDR: 0xWR000e, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1B00f, ADDR: 0xWR000f, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1B010, ADDR: 0xWR0010, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1B011, ADDR: 0xWR0011, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1B012, ADDR: 0xWR0012, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1B013, ADDR: 0xWR0013, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1B014, ADDR: 0xWR0014, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1B015, ADDR: 0xWR0015, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1B016, ADDR: 0xWR0016, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1B017, ADDR: 0xWR0017, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1B018, ADDR: 0xWR0018, Size (B): 8, isRead: 0
+MEM: TID: 1, IP: 0x1B019, ADDR: 0xWR0019, Size (B): 8, isRead: 0
+LOCK: After acquire TID: 2, address: 0xLOCKAAAA
+MEM: TID: 2, IP: 0x90003, ADDR: 0xSAFE0001, Size (B): 8, isRead: 1
+LOCK: Before release TID: 2, address: 0xLOCKAAAA
+MEM: TID: 1, IP: 0x1C001, ADDR: 0xRW0001, Size (B): 8, isRead: 1
+MEM: TID: 1, IP: 0x1C002, ADDR: 0xRW0002, Size (B): 8, isRead: 1
+MEM: TID: 1, IP: 0x1C003, ADDR: 0xRW0003, Size (B): 8, isRead: 1
+MEM: TID: 1, IP: 0x1C004, ADDR: 0xRW0004, Size (B): 8, isRead: 1
+MEM: TID: 1, IP: 0x1C005, ADDR: 0xRW0005, Size (B): 8, isRead: 1
+MEM: TID: 1, IP: 0x1C006, ADDR: 0xRW0006, Size (B): 8, isRead: 1
+MEM: TID: 1, IP: 0x1C007, ADDR: 0xRW0007, Size (B): 8, isRead: 1
+MEM: TID: 1, IP: 0x1C008, ADDR: 0xRW0008, Size (B): 8, isRead: 1
+MEM: TID: 1, IP: 0x1C009, ADDR: 0xRW0009, Size (B): 8, isRead: 1
+MEM: TID: 1, IP: 0x1C00a, ADDR: 0xRW000a, Size (B): 8, isRead: 1
+MEM: TID: 1, IP: 0x1C00b, ADDR: 0xRW000b, Size (B): 8, isRead: 1
+MEM: TID: 1, IP: 0x1C00c, ADDR: 0xRW000c, Size (B): 8, isRead: 1
+MEM: TID: 1, IP: 0x1C00d, ADDR: 0xRW000d, Size (B): 8, isRead: 1
+MEM: TID: 1, IP: 0x1C00e, ADDR: 0xRW000e, Size (B): 8, isRead: 1
+MEM: TID: 1, IP: 0x1C00f, ADDR: 0xRW000f, Size (B): 8, isRead: 1
+MEM: TID: 1, IP: 0x1C010, ADDR: 0xRW0010, Size (B): 8, isRead: 1
+MEM: TID: 1, IP: 0x1C011, ADDR: 0xRW0011, Size (B): 8, isRead: 1
+MEM: TID: 1, IP: 0x1C012, ADDR: 0xRW0012, Size (B): 8, isRead: 1
+MEM: TID: 1, IP: 0x1C013, ADDR: 0xRW0013, Size (B): 8, isRead: 1
+MEM: TID: 1, IP: 0x1C014, ADDR: 0xRW0014, Size (B): 8, isRead: 1
+MEM: TID: 1, IP: 0x1C015, ADDR: 0xRW0015, Size (B): 8, isRead: 1
+MEM: TID: 1, IP: 0x1C016, ADDR: 0xRW0016, Size (B): 8, isRead: 1
+LOCK: After acquire TID: 3, address: 0xLOCKBBBB
+MEM: TID: 3, IP: 0x90004, ADDR: 0xSAFE0002, Size (B): 8, isRead: 0
+LOCK: Before release TID: 3, address: 0xLOCKBBBB
+MEM: TID: 2, IP: 0x2A001, ADDR: 0xWW0001, Size (B): 8, isRead: 0
+MEM: TID: 2, IP: 0x2A002, ADDR: 0xWW0002, Size (B): 8, isRead: 0
+MEM: TID: 2, IP: 0x2A003, ADDR: 0xWW0003, Size (B): 8, isRead: 0
+MEM: TID: 2, IP: 0x2A004, ADDR: 0xWW0004, Size (B): 8, isRead: 0
+MEM: TID: 2, IP: 0x2A005, ADDR: 0xWW0005, Size (B): 8, isRead: 0
+MEM: TID: 2, IP: 0x2A006, ADDR: 0xWW0006, Size (B): 8, isRead: 0
+MEM: TID: 2, IP: 0x2A007, ADDR: 0xWW0007, Size (B): 8, isRead: 0
+MEM: TID: 2, IP: 0x2A008, ADDR: 0xWW0008, Size (B): 8, isRead: 0
+MEM: TID: 2, IP: 0x2A009, ADDR: 0xWW0009, Size (B): 8, isRead: 0
+MEM: TID: 2, IP: 0x2A00a, ADDR: 0xWW000a, Size (B): 8, isRead: 0
+MEM: TID: 3, IP: 0x3A00b, ADDR: 0xWW000b, Size (B): 8, isRead: 0
+MEM: TID: 3, IP: 0x3A00c, ADDR: 0xWW000c, Size (B): 8, isRead: 0
+MEM: TID: 3, IP: 0x3A00d, ADDR: 0xWW000d, Size (B): 8, isRead: 0
+MEM: TID: 3, IP: 0x3A00e, ADDR: 0xWW000e, Size (B): 8, isRead: 0
+MEM: TID: 3, IP: 0x3A00f, ADDR: 0xWW000f, Size (B): 8, isRead: 0
+MEM: TID: 3, IP: 0x3A010, ADDR: 0xWW0010, Size (B): 8, isRead: 0
+MEM: TID: 3, IP: 0x3A011, ADDR: 0xWW0011, Size (B): 8, isRead: 0
+MEM: TID: 3, IP: 0x3A012, ADDR: 0xWW0012, Size (B): 8, isRead: 0
+MEM: TID: 3, IP: 0x3A013, ADDR: 0xWW0013, Size (B): 8, isRead: 0
+MEM: TID: 3, IP: 0x3A014, ADDR: 0xWW0014, Size (B): 8, isRead: 0
+LOCK: After acquire TID: 2, address: 0xLOCKAAAA
+MEM: TID: 2, IP: 0x90005, ADDR: 0xSAFE0003, Size (B): 8, isRead: 0
+LOCK: Before release TID: 2, address: 0xLOCKAAAA
+MEM: TID: 2, IP: 0x2B001, ADDR: 0xWR0001, Size (B): 8, isRead: 1
+MEM: TID: 2, IP: 0x2B002, ADDR: 0xWR0002, Size (B): 8, isRead: 1
+MEM: TID: 2, IP: 0x2B003, ADDR: 0xWR0003, Size (B): 8, isRead: 1
+MEM: TID: 2, IP: 0x2B004, ADDR: 0xWR0004, Size (B): 8, isRead: 1
+MEM: TID: 2, IP: 0x2B005, ADDR: 0xWR0005, Size (B): 8, isRead: 1
+MEM: TID: 2, IP: 0x2B006, ADDR: 0xWR0006, Size (B): 8, isRead: 1
+MEM: TID: 2, IP: 0x2B007, ADDR: 0xWR0007, Size (B): 8, isRead: 1
+MEM: TID: 2, IP: 0x2B008, ADDR: 0xWR0008, Size (B): 8, isRead: 1
+MEM: TID: 2, IP: 0x2B009, ADDR: 0xWR0009, Size (B): 8, isRead: 1
+MEM: TID: 2, IP: 0x2B00a, ADDR: 0xWR000a, Size (B): 8, isRead: 1
+MEM: TID: 2, IP: 0x2B00b, ADDR: 0xWR000b, Size (B): 8, isRead: 1
+MEM: TID: 2, IP: 0x2B00c, ADDR: 0xWR000c, Size (B): 8, isRead: 1
+MEM: TID: 3, IP: 0x3B00d, ADDR: 0xWR000d, Size (B): 8, isRead: 1
+MEM: TID: 3, IP: 0x3B00e, ADDR: 0xWR000e, Size (B): 8, isRead: 1
+MEM: TID: 3, IP: 0x3B00f, ADDR: 0xWR000f, Size (B): 8, isRead: 1
+MEM: TID: 3, IP: 0x3B010, ADDR: 0xWR0010, Size (B): 8, isRead: 1
+MEM: TID: 3, IP: 0x3B011, ADDR: 0xWR0011, Size (B): 8, isRead: 1
+MEM: TID: 3, IP: 0x3B012, ADDR: 0xWR0012, Size (B): 8, isRead: 1
+MEM: TID: 3, IP: 0x3B013, ADDR: 0xWR0013, Size (B): 8, isRead: 1
+MEM: TID: 3, IP: 0x3B014, ADDR: 0xWR0014, Size (B): 8, isRead: 1
+MEM: TID: 3, IP: 0x3B015, ADDR: 0xWR0015, Size (B): 8, isRead: 1
+MEM: TID: 3, IP: 0x3B016, ADDR: 0xWR0016, Size (B): 8, isRead: 1
+MEM: TID: 3, IP: 0x3B017, ADDR: 0xWR0017, Size (B): 8, isRead: 1
+MEM: TID: 3, IP: 0x3B018, ADDR: 0xWR0018, Size (B): 8, isRead: 1
+MEM: TID: 3, IP: 0x3B019, ADDR: 0xWR0019, Size (B): 8, isRead: 1
+LOCK: After acquire TID: 3, address: 0xLOCKAAAA
+MEM: TID: 3, IP: 0x90006, ADDR: 0xSAFE0003, Size (B): 8, isRead: 1
+LOCK: Before release TID: 3, address: 0xLOCKAAAA
+MEM: TID: 2, IP: 0x2C001, ADDR: 0xRW0001, Size (B): 8, isRead: 0
+MEM: TID: 2, IP: 0x2C002, ADDR: 0xRW0002, Size (B): 8, isRead: 0
+MEM: TID: 2, IP: 0x2C003, ADDR: 0xRW0003, Size (B): 8, isRead: 0
+MEM: TID: 2, IP: 0x2C004, ADDR: 0xRW0004, Size (B): 8, isRead: 0
+MEM: TID: 2, IP: 0x2C005, ADDR: 0xRW0005, Size (B): 8, isRead: 0
+MEM: TID: 2, IP: 0x2C006, ADDR: 0xRW0006, Size (B): 8, isRead: 0
+MEM: TID: 2, IP: 0x2C007, ADDR: 0xRW0007, Size (B): 8, isRead: 0
+MEM: TID: 2, IP: 0x2C008, ADDR: 0xRW0008, Size (B): 8, isRead: 0
+MEM: TID: 2, IP: 0x2C009, ADDR: 0xRW0009, Size (B): 8, isRead: 0
+MEM: TID: 2, IP: 0x2C00a, ADDR: 0xRW000a, Size (B): 8, isRead: 0
+MEM: TID: 2, IP: 0x2C00b, ADDR: 0xRW000b, Size (B): 8, isRead: 0
+MEM: TID: 3, IP: 0x3C00c, ADDR: 0xRW000c, Size (B): 8, isRead: 0
+MEM: TID: 3, IP: 0x3C00d, ADDR: 0xRW000d, Size (B): 8, isRead: 0
+MEM: TID: 3, IP: 0x3C00e, ADDR: 0xRW000e, Size (B): 8, isRead: 0
+MEM: TID: 3, IP: 0x3C00f, ADDR: 0xRW000f, Size (B): 8, isRead: 0
+MEM: TID: 3, IP: 0x3C010, ADDR: 0xRW0010, Size (B): 8, isRead: 0
+MEM: TID: 3, IP: 0x3C011, ADDR: 0xRW0011, Size (B): 8, isRead: 0
+MEM: TID: 3, IP: 0x3C012, ADDR: 0xRW0012, Size (B): 8, isRead: 0
+MEM: TID: 3, IP: 0x3C013, ADDR: 0xRW0013, Size (B): 8, isRead: 0
+MEM: TID: 3, IP: 0x3C014, ADDR: 0xRW0014, Size (B): 8, isRead: 0
+MEM: TID: 3, IP: 0x3C015, ADDR: 0xRW0015, Size (B): 8, isRead: 0
+MEM: TID: 3, IP: 0x3C016, ADDR: 0xRW0016, Size (B): 8, isRead: 0
+LOCK: After acquire TID: 1, address: 0xLOCKAAAA
+MEM: TID: 1, IP: 0x90007, ADDR: 0xSAFE0004, Size (B): 8, isRead: 1
+LOCK: Before release TID: 1, address: 0xLOCKAAAA
+THREAD: Child end: 1
+THREAD: Child end: 2
+THREAD: Child end: 3
