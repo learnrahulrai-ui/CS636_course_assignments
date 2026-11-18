@@ -1,0 +1,207 @@
+Linux kernel concurrency investigation, 2026-11-19.
+Source lecture: https://www.cse.iitk.ac.in/users/swarnendu/courses/spring2026-cs636/concurrency-bugs.pdf
+
+The governing mistake is treating a series of operations as safe because each individual operation appears safe. What must remain indivisible is the relationship between those operations. A lock on the wrong variable, an atomic counter, or a memory barrier on only one side may not enforce that relationship.
+
+The files are cumulative: 01 is completely included in 02; 02 is completely included in 03; 03 is completely included in 04. Each .c file is a self-contained working Linux program with all previous functions built in. Neither compiling nor running a fixed kernel proves the historical defect still exists.
+
+01_watch_queue.c exercises real notification-pipe, keyctl, and watch-queue kernel paths. It can activate an actual 2026 publication race when --watch-race is explicitly requested inside a disposable virtual machine. No userspace simulation is substituted for the bug. A no-crash result after N trials does not prove the kernel is safe. Hardware/platform and kernel configuration can block the path.
+
+02_watch_queue_perf.c contains all of 01 plus real perf_event_open, mmap and PERF_EVENT_IOC_SET_OUTPUT. The safe test maps and redirects a kernel perf ring buffer but does NOT force map_range() to fail at the exact moment a second thread races. That additional fault injection / race scheduling is required for the historical 2026 perf UAF reproduction.
+
+03_watch_queue_perf_ktls.c contains all of 02 plus an actual loopback TCP connection with Linux kTLS TX/RX, AES-GCM encryption and decryption. The cipher material is fixed for a local controlled integration test and must never be used in a deployed TLS connection. It does NOT force asynchronous crypto completion needed for the 2020 panic. Kernel CONFIG_TLS, TCP_ULP tls, and AES-GCM support are required.
+
+04_full_linux_kernel_lab.c contains all of 03 plus a read-only kernel checker for trace, KCSAN, lockdep and perf restrictions. Missing pseudo-files do not establish a kernel configuration; check the actual .config of the target kernel. All four compile independently without modules or libraries beyond libc/pthreads.
+
+Build each cumulative file independently:
+    gcc -O2 -Wall -Wextra -Werror -pthread 04_full_linux_kernel_lab.c -o kernel_lab
+    ./kernel_lab --audit --watch --perf --ktls
+
+Only in a disposable VM whose crash and data loss you accept:
+    ./kernel_lab --watch-race --vm-i-accept-crash
+
+Before attempting a historical exploit/bug, inspect the exact running kernel source, verify the vulnerable functions exist, and check if the upstream fix has been backported. The program has no way to establish vulnerability from uname alone. Do not run the dangerous mode on your laptop's host kernel.
+
+2026 kernel/watch_queue.c: actual syscall event chain, no hardware:
+    pipe2(O_NOTIFICATION_PIPE) -> add_key -> KEYCTL_WATCH_KEY
+    CPU A: watch_queue_set_size() allocates pages and bitmap
+    CPU A: ordinary stores of notes, notes_bitmap, nr_pages, nr_notes
+    CPU B: KEYCTL_SETPERM -> keyctl_setperm_key -> post_one_notification
+    CPU B: sees nr_notes > 0 -> selects bitmap bit -> notes[0] is NULL -> crash
+    WRONG: publishing four ordinary fields makes them observable as one unit.
+    FIX: initialize pages and bitmap -> smp_store_release(&nr_notes, value)
+         smp_load_acquire(&nr_notes) -> safely access pages and bitmap.
+    Original 2026-10-08 patch proposed lock; 2026-10-09 v2 uses barriers.
+    Upstream commit: 5e531d62f1f8834faf7a4eed0d41105cf6570a8f
+    Primary: https://lkml.iu.edu/hypermail/linux/kernel/2610.1/04603.html
+    Original: https://lists.openwall.net/linux-kernel/2026/10/08/2250
+    Relevant lecture: ordering violations, data races, memory-model checking.
+
+2022 kernel/watch_queue.c -> fs/pipe.c: separate bug in the same user API:
+    producer under pipe->rd_wait.lock -> fills pipe_buffer -> plain pipe->head++
+    consumer under pipe->mutex -> reads pipe->head -> accesses pipe_buffer
+    WRONG: protecting producer and consumer with different locks guarantees visibility.
+    FIX: smp_store_release(&pipe->head, head + 1), paired with
+         smp_load_acquire(&pipe->head) in pipe_read().
+    Upstream commit: 2ed147f015af2b48f41c6f0b6746aa9ea85c19f3
+    Primary: https://lkml.rescloud.iu.edu/2203.1/07747.html
+    Relevant lecture: happens-before and weak memory ordering.
+
+2020 net/tls/tls_sw.c: completion is logically wrong despite atomic pending counter:
+    CPU B: tls_decrypt_done atomic decrement makes decrypt_pending zero
+    CPU B: evaluates async_notify true, about to call complete()
+    CPU A: tls_sw_recvmsg reads pending zero, reinit_completion()
+    CPU B: complete() fires for the already-finished request
+    NEXT REQUEST: completion state is stale; wait can return too soon.
+    WRONG: atomic decrement alone makes completion and reset atomic together.
+    FIX: spin lock connects pending count and completion notification decisions.
+    Upstream commit: 0cada33241d9de205522e3858b18e506ca5cce2c
+    Primary: https://lists.openwall.net/netdev/2020/05/22/305
+    Relevant lecture: atomicity violation without a simple data-race diagnosis.
+
+2026 kernel/events/core.c: ring buffer lifetime is bigger than one mutex region:
+    CPU A: perf_mmap holds mmap_mutex -> creates event->rb -> unlocks
+    CPU A: map_range() later fails -> perf_mmap_close() cleans up ring buffer
+    CPU B: PERF_EVENT_IOC_SET_OUTPUT -> ring_buffer_get() observes old event->rb
+    CPU B: reference count increments after it may have hit zero -> warning/UAF
+    WRONG: publishing event->rb under mutex protects its entire construction and cleanup.
+    FIX: keep mmap_mutex held through map_range and its failure cleanup.
+    Upstream commit: 77de62ad3de3967818c3dbe656b7336ebee461d2
+    Primary: https://lkml.iu.edu/2603.0/09293.html (only original commit portion; later added LLM text is not primary evidence)
+    Relevant lecture: atomicity / lifetime / shared-object interleavings.
+
+2021 drivers/usb/gadget/composite.c: one CPU can deadlock itself:
+    usb_function_deactivate holds cdev->lock -> usb_gadget_deactivate
+    -> usb_gadget_disconnect -> composite_disconnect attempts cdev->lock AGAIN
+    spin lock waits on lock already held by same CPU -> stalls / RCU stall reports
+    WRONG: a function call that appears local cannot indirectly return to the lock.
+    FIX: release spin lock around gadget deactivate/activate; restore afterward.
+    Upstream commit: 5cc35c224a80aa5a5a539510ef049faf0d6ed181
+    Primary: https://lkml.iu.edu/2101.1/02459.html
+    Relevant lecture: deadlock, lock-dependency graph. Needs gadget setup to reproduce.
+
+2019 kernel/sched/completion.c: lost waiter, real wake-up protocol error:
+    T0: enqueue -> sleeps
+    T1: complete -> done 0 to 1 -> wakes T0 -> removes T0 from wait queue
+    T2: wait_for_completion -> consumes done 1 to 0
+    T0: resumes -> sees done=0 -> goes back to sleep WITHOUT rejoining queue
+    no further wakeup possible; a lock was not the missing ingredient.
+    WRONG: registering a waiter once remains sufficient across every loop iteration.
+    FIX: __prepare_to_swait() inside do_wait_for_common() loop.
+    Primary: https://lists.openwall.net/linux-kernel/2019/05/09/1047
+    Relevant lecture: condition synchronization, progress, missed wakeups.
+
+2023 PREEMPT_RT kernel/locking/rwbase_rt.c: starvation, not deadlock:
+    One writer repeatedly waits for an inode write lock.
+    16 readers repeatedly get read lock; none individually waits forever.
+    Writer cannot enter; LTP dio_truncate times out after 30 minutes.
+    WRONG: since every reader makes progress, the writer must eventually do so.
+    FIX: after at least 4 ms blocked, restrict normal-priority reader bias.
+    RT or deadline readers can still starve a writer by design (not absolute fairness).
+    Primary: https://lkml.iu.edu/2301.2/07043.html
+    Relevant lecture: starvation, fairness and progress, RT-specific.
+
+2026 fs/f2fs/checkpoint.c: livelock in file-system checkpoint:
+    list head points to an inode currently being freed.
+    igrab() cannot take a new reference -> returns failure.
+    code retries first item without moving it -> same inode every iteration.
+    Meanwhile other dirty inodes are ready, but no progress is made.
+    WRONG: retrying a list scan guarantees eventual progress without changing state.
+    FIX: list_move_tail before igrab; cond_resched after failed igrab.
+    Primary: https://lists.openwall.net/linux-kernel/2026/09/09/2530
+    Reviewed commit: https://kernel.googlesource.com/pub/scm/linux/kernel/git/chao/linux/+/e398da0b9131583e0f52bca733eaefc3b3aeae95
+    Relevant lecture: livelock distinct from starvation and deadlock.
+
+2026 mm/memory.c device-private migration: HMM livelock / starvation:
+    hmm_range_fault repeatedly fails folio_trylock on device-private folio.
+    Same CPU is needed by a work item that can release the contested folio.
+    Busy retry starves the required work; waiting for lock prevents its release.
+    Primary: https://www.mail-archive.com/dri-devel@lists.freedesktop.org/msg588424.html
+    Relevant lecture: cross-component progress, kernel + GPU memory management.
+    Requires a suitable HMM device-private memory path, not just an arbitrary GPU.
+
+2026 net/sched/act_tunnel_key.c: object retirement breaks RCU reader lifetime:
+    updater replaces tc action params; immediately drops old dst reference.
+    reader under rcu_read_lock_bh can still have the old params.
+    dst_clone sees dying old dst -> reference-count / use-after-free fault.
+    Fix defers dst_release until the RCU callback after old readers finish.
+    Primary: https://lists.openwall.net/netdev/2026/07/11/140
+    Relevant lecture: lifetime, lock-free readers, temporal ordering.
+    Needs traffic control tunnel-key action and a reproducible datapath; not in .c demo.
+
+2020 lib/debugobjects.c: a genuine KCSAN race report:
+    fill_pool reads obj_pool_free outside pool_lock;
+    __free_object changes obj_pool_free concurrently under pool_lock.
+    Writer's lock cannot protect a reader who never takes that lock.
+    Fix pairs READ_ONCE and WRITE_ONCE on independent diagnostic counters.
+    Upstream commit: 35fd7a637c42bb54ba4608f4d40ae6e55fc88781
+    Primary: https://lkml.iu.edu/2002.2/06429.html
+    Relevant lecture: actual kernel data race, sampled dynamic detector.
+
+2024 kernel/time/timekeeping.c + include/linux/seqlock.h: detector false positive:
+    KCSAN reported writes in timekeeping_update racing ktime_get_mono_fast_ns.
+    The seqcount latch deliberately permits a reader to touch a stale copy,
+    with a validation protocol; unannotated latch confused KCSAN.
+    Fix added an instrumentable seqcount_latch API.
+    Primary: https://lkml.iu.edu/hypermail/linux/kernel/2411.0/03520.html
+    Relevant lecture: false positive from incomplete synchronization semantics.
+
+Kernel equivalents, with the important limitations:
+    KCSAN: lib/kcsan/; docs.kernel.org/dev-tools/kcsan.html
+      compiler software instrumentation + sampled soft watchpoints.
+      detects observed races; does not prove absence; does not detect all atomicity violations.
+    lockdep: kernel/locking/lockdep.c; Documentation/locking/lockdep-design.rst
+      runtime graph of lock dependencies, potential cycles and IRQ lock misuse.
+      NOT Eraser's per-memory-address lockset algorithm.
+    LKMM: tools/memory-model/; docs.kernel.org/dev-tools/lkmm/
+      herd7 exhaustively checks small concurrent executions against memory-order axioms.
+      Models the publish/consume rule; it is not a runtime race detector.
+      From a matching kernel source tree, run:
+      cd tools/memory-model
+      herd7 -conf linux-kernel.cfg litmus-tests/SB+fencembonceonces.litmus
+    RCU: kernel/rcu/; include/linux/rcupdate.h
+      defers memory reclamation until preexisting readers have left; does not
+      automatically defer destruction of objects indirectly held by old pointers.
+    seqcount: include/linux/seqlock.h
+      readers retry after concurrent writers; KCSAN requires proper annotation.
+    DataCollider: originally a Windows-kernel detector using hardware debug registers.
+      Linux historical analogue: RaceHound using Kprobes + hardware breakpoints.
+      It was an out-of-tree research tool, not mainline Linux.
+    Eraser lockset, DJIT+, FastTrack, Atomizer and Velodrome are lecture algorithms,
+      not modules that Linux ships under those names. Linux Redflag research
+      implemented kernel-specific lockset and atomicity checking outside mainline.
+
+Original research, doctoral work and older archives (not blogs):
+    2010, Abhinav Duggal MSc thesis, Stony Brook, 'Stopping Data Races Using Redflag':
+    https://commons.library.stonybrook.edu/stony-brook-theses-and-dissertations-collection/190/
+    2012, Justin Seyster PhD dissertation, 'Runtime Verification of Kernel-Level Concurrency Using Compiler-Based Instrumentation':
+    https://commons.library.stonybrook.edu/stony-brook-theses-and-dissertations-collection/613/
+    2013 RaceHound hardware breakpoints Linux research:
+    https://www.ispras.ru/en/publications/2013/on_the_implementation_of_data_breakpoints_based_race_detection_for_linux_kernel_modules/
+    2015 RaceHound LKML release:
+    https://lkml.rescloud.iu.edu/hypermail/linux/kernel/1511.0/03577.html
+    2020 Krace, IEEE Security & Privacy, 23 races in ext4/btrfs/VFS, nine harmful:
+    https://ieeexplore.ieee.org/document/9152693/
+    2021 Snowboard, SOSP, 14 new kernel concurrency bugs, 12 maintainer confirmed:
+    https://research.google/pubs/snowboard-finding-kernel-concurrency-bugs-through-systematic-inter-thread-communication-analysis/
+    2026 ICSE, 200 kernel concurrency bugs and dataset:
+    https://www.cs.purdue.edu/homes/pfonseca/papers/icse26-concurrencybugstudy.pdf
+    https://github.com/rssys/kernel-concurrency-bug-study
+    2024 memory-ordering bug study, Ozz, USENIX Security:
+    https://www.usenix.org/conference/usenixsecurity24/presentation/kim-kyungho
+    Original DataCollider OSDI 2010:
+    https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/DataCollider20-20OSDI2010.pdf
+    Linux kernel official LKMM instruction and sample tests:
+    https://cdn.kernel.org/doc/html/latest/dev-tools/lkmm/readme.html
+
+Safe execution validation performed on Linux 6.18.57 x86_64:
+    compilation: all four source files passed gcc -O2 -Wall -Wextra -Werror -pthread.
+    perf: map succeeded, real mmap_page data_offset=4096, data_size=32768,
+          PERF_EVENT_IOC_SET_OUTPUT succeeded; kernel ring head advanced.
+    watch: notification pipe creation failed ENOPKG; this target lacks support.
+    ktls: TCP_ULP 'tls' failed ENOENT; this target lacks required kTLS capability.
+    audit: KCSAN, lockdep, trace data unavailable in this container.
+    Dangerous watch-race mode was deliberately NOT executed.
+    No real bug was demonstrated as unfixed on this environment.
+
+What each executable proves is narrow. The broad source claims in this dossier come from published upstream patches and original academic research. The safe executables verify that particular syscalls and data paths are accessible; only an appropriately configured historical kernel, relevant workload, and observation of the reported failure can establish an actual reproduction.
